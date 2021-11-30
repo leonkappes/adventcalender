@@ -5,23 +5,19 @@
       <div class="modal-content">
         <div class="modal-header">
           <span class="close">&times;</span>
-          <h2 id="modal-titel">Falsches Türchen!</h2>
+          <h2 id="modal-titel">
+            Falsches Türchen!
+          </h2>
         </div>
         <div class="modal-body">
-          <p id="modal-text">Bist du sicher, dass du schon Zählen kannst?</p>
-          <br />
+          <p id="modal-text">
+            Bist du sicher, dass du schon Zählen kannst?
+          </p>
+          <br>
         </div>
       </div>
     </div>
     <div class="grid grid-cols-6 gap-4">
-      <div class="row-span-1 col-span-2">
-        <div class="title">
-          <img
-            src="https://immortal-roleplay.one/templates/default/logo_big.png"
-            alt="Immortal-Logo"
-          />
-        </div>
-      </div>
       <Door
         v-for="door in doors"
         :key="door.price"
@@ -36,287 +32,290 @@
 </template>
 
 <script>
+
 export default {
-  data() {
+  data () {
     return {
       doors: [
         {
           day: 13,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 2,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 17,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 6,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 9,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 18,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 11,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 13,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 24,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 23,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 5,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 10,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 3,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 16,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 14,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 22,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 1,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 19,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 20,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 12,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 4,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 7,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 15,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 8,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
+          opened: false
         },
         {
           day: 21,
           url: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
           price: '',
-          opened: false,
-        },
-      ],
+          opened: false
+        }
+      ]
     }
   },
-  mounted() {
+  mounted () {
+    const BASE_URL = 'https://advent/'
     window.addEventListener('keyup', (event) => {
       if (event.key === 'Escape' || event.key === 'Backspace') {
-        this.$api.post('hide')
+        window.jQuery.post(BASE_URL + 'hide')
         document.getElementById('partlices').style.display = 'none'
       }
     })
-    window.addEventListener('showdoors', (event) => {
-      document.getElementById('partlices').style.display = 'block'
-    })
-    window.addEventListener('getDoors', (event) => {
-      this.doors = event.detail.doors
+    window.addEventListener('message', (event) => {
+      const eventType = event.data.event
+      if (eventType === 'open') {
+        document.getElementById('partlices').style.display = 'block'
+      } else if (eventType === 'door') {
+        this.doors = event.data.doors
+      }
     })
     require('particles.js')
     window.particlesJS('partlices', {
       particles: {
         number: {
-          value: 80,
+          value: 52,
           density: {
             enable: true,
-            value_area: 800,
-          },
+            value_area: 631.3280775270874
+          }
         },
         color: {
-          value: '#ffffff',
+          value: '#fff'
         },
         shape: {
-          type: 'image',
+          type: 'circle',
           stroke: {
-            width: 3,
-            color: '#fff',
+            width: 0,
+            color: '#000000'
           },
           polygon: {
-            nb_sides: 5,
+            nb_sides: 5
           },
           image: {
-            src:
-              'http://www.dynamicdigital.us/wp-content/uploads/2013/02/starburst_white_300_drop_2.png',
+            src: 'img/github.svg',
             width: 100,
-            height: 100,
-          },
+            height: 100
+          }
         },
         opacity: {
-          value: 0.7,
-          random: false,
+          value: 0.5,
+          random: true,
           anim: {
             enable: false,
             speed: 1,
             opacity_min: 0.1,
-            sync: false,
-          },
+            sync: false
+          }
         },
         size: {
           value: 5,
           random: true,
           anim: {
             enable: false,
-            speed: 20,
+            speed: 40,
             size_min: 0.1,
-            sync: false,
-          },
+            sync: false
+          }
         },
         line_linked: {
           enable: false,
-          distance: 50,
+          distance: 500,
           color: '#ffffff',
-          opacity: 0.6,
-          width: 1,
+          opacity: 0.4,
+          width: 2
         },
         move: {
           enable: true,
-          speed: 5,
+          speed: 1.5,
           direction: 'bottom',
-          random: true,
+          random: false,
           straight: false,
           out_mode: 'out',
           bounce: false,
           attract: {
-            enable: true,
-            rotateX: 300,
-            rotateY: 1200,
-          },
-        },
+            enable: false,
+            rotateX: 600,
+            rotateY: 1200
+          }
+        }
       },
       interactivity: {
         detect_on: 'canvas',
         events: {
           onhover: {
             enable: false,
-            mode: 'bubble',
+            mode: 'bubble'
           },
           onclick: {
-            enable: false,
-            mode: 'repulse',
+            enable: true,
+            mode: 'repulse'
           },
-          resize: false,
+          resize: true
         },
         modes: {
           grab: {
-            distance: 150,
+            distance: 400,
             line_linked: {
-              opacity: 1,
-            },
+              opacity: 0.5
+            }
           },
           bubble: {
-            distance: 200,
-            size: 40,
-            duration: 2,
-            opacity: 8,
-            speed: 3,
+            distance: 400,
+            size: 4,
+            duration: 0.3,
+            opacity: 1,
+            speed: 3
           },
           repulse: {
             distance: 200,
-            duration: 0.2,
+            duration: 0.4
           },
           push: {
-            particles_nb: 4,
+            particles_nb: 4
           },
           remove: {
-            particles_nb: 2,
-          },
-        },
+            particles_nb: 2
+          }
+        }
       },
-      retina_detect: true,
+      retina_detect: true
     })
     const element = document.getElementsByClassName('particles-js-canvas-el')[0]
     const top = element.parentNode
@@ -340,12 +339,12 @@ export default {
     }
   },
   methods: {
-    sizes(door) {
-      if (door === 24) return 'row-span-3 col-span-2'
-      if (door === 19) return 'col-span-2 row-span-2'
+    sizes (door) {
+      if (door === 24) { return 'row-span-3 col-span-2' }
+      if (door === 19) { return 'col-span-2 row-span-2' }
       return ''
-    },
-  },
+    }
+  }
 }
 </script>
 
@@ -359,7 +358,7 @@ export default {
   position: absolute;
 }
 #partlices {
-  background: url(https://immortal-roleplay.one/Images/Immortal.png) no-repeat
+  background: url(https://immortal-roleplay.one/Images/TS.png) no-repeat
     top center #82d8cb;
   background-size: cover;
   width: 100%;

@@ -7,10 +7,10 @@
         :disabled="isDisabled"
         @click="sendDoor"
         @input="opened = $event.target.checked"
-      />
+      >
       <div class="door">
         <div class="front">{{ day }}</div>
-        <div class="back" :style="urlStyle"></div>
+        <div class="back" :style="urlStyle" />
       </div>
     </label>
   </div>
@@ -21,48 +21,49 @@ export default {
   props: {
     day: {
       default: 1,
-      type: Number,
+      type: Number
     },
     url: {
       default: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_X.svg',
-      type: String,
+      type: String
     },
     price: {
       default: '',
-      type: String,
+      type: String
     },
     opened: {
       default: false,
-      type: Boolean,
-    },
+      type: Boolean
+    }
   },
   computed: {
-    urlStyle() {
+    urlStyle () {
       return 'background-image: url("' + this.url + '")'
     },
-    isDisabled() {
+    isDisabled () {
       const d = new Date()
       return this.day > d.getDate() || this.opened
-    },
+    }
   },
   methods: {
-    sendDoor() {
+    sendDoor () {
       if (process.client) {
         const d = new Date()
+        const BASE_URL = 'https://advent/'
         if (this.day <= d.getDate()) {
-          this.$api.openDoor(this.day)
+          window.jQuery.post(BASE_URL + 'openDoor', JSON.stringify({ day: this.day }))
           window.dispatchEvent(
             new CustomEvent('triggerModal', {
               detail: {
                 text: this.price,
-                titel: 'Türchen Nummer ' + this.day,
-              },
+                titel: 'Türchen Nummer ' + this.day
+              }
             })
           )
         }
       }
     },
-    test() {
+    test () {
       if (process.client) {
         const d = new Date()
         if (this.day > d.getDate()) {
@@ -70,14 +71,14 @@ export default {
             new CustomEvent('triggerModal', {
               detail: {
                 text: 'Bist du sicher, dass du schon Zählen kannst?',
-                titel: 'Falsches Türchen',
-              },
+                titel: 'Falsches Türchen'
+              }
             })
           )
         }
       }
-    },
-  },
+    }
+  }
 }
 </script>
 
